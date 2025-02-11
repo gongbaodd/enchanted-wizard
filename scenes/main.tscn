@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=7 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://65iud7hd2th1" path="res://models/wand/the_elder_wand.glb" id="2_js13c"]
+[ext_resource type="PackedScene" uid="uid://cfle6s140ygto" path="res://models/book/paladins_book.glb" id="2_witxk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2be3w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -14,10 +15,6 @@ sky_material = SubResource("ProceduralSkyMaterial_2be3w")
 background_mode = 2
 sky = SubResource("Sky_lvehk")
 tonemap_mode = 2
-
-[sub_resource type="BoxMesh" id="BoxMesh_xrbbq"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_5c2p5"]
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ac03b")
@@ -39,9 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
 tracker = &"left_hand"
 pose = &"grip"
 
-[node name="TestL" type="MeshInstance3D" parent="XROrigin3D/Left"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_xrbbq")
+[node name="book" parent="XROrigin3D/Left" instance=ExtResource("2_witxk")]
+transform = Transform3D(0.933568, -0.0174959, -0.357975, 0.33895, -0.281476, 0.897711, -0.116467, -0.959409, -0.256846, 0, 0, 0)
 
 [node name="Right" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.5)
@@ -50,8 +46,3 @@ pose = &"grip"
 
 [node name="wand" parent="XROrigin3D/Right" instance=ExtResource("2_js13c")]
 transform = Transform3D(-3.78552e-08, -2.18557e-08, 1, -0.5, 0.866025, 0, -0.866025, -0.5, -4.37114e-08, 0, 0, -0.1)
-
-[node name="TestR" type="MeshInstance3D" parent="XROrigin3D/Right"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-visible = false
-mesh = SubResource("BoxMesh_5c2p5")
