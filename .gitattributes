@@ -28,6 +28,7 @@
 *.obj filter=lfs diff=lfs merge=lfs -text
 *.glb filter=lfs diff=lfs merge=lfs -text
 
+
 #ETC
 *.a filter=lfs diff=lfs merge=lfs -text
 *.exr filter=lfs diff=lfs merge=lfs -text
@@ -43,11 +44,11 @@
 *.lxo filter=lfs diff=lfs merge=lfs -text
 
 # Godot-specific binaries
-*.import filter=lfs diff=lfs merge=lfs
-*.stex filter=lfs diff=lfs merge=lfs
-*.cfb filter=lfs diff=lfs merge=lfs
-*.msh filter=lfs diff=lfs merge=lfs
-*.res filter=lfs diff=lfs merge=lfs
-*.tres filter=lfs diff=lfs merge=lfs
-*.scn filter=lfs diff=lfs merge=lfs
-*.tscn filter=lfs diff=lfs merge=lfs
+*.import filter=lfs diff=lfs merge=lfs -text
+*.stex filter=lfs diff=lfs merge=lfs -text
+*.cfb filter=lfs diff=lfs merge=lfs -text
+*.msh filter=lfs diff=lfs merge=lfs -text
+*.res filter=lfs diff=lfs merge=lfs -text
+*.tres filter=lfs diff=lfs merge=lfs -text
+*.scn filter=lfs diff=lfs merge=lfs -text
+*.tscn filter=lfs diff=lfs merge=lfs -text
