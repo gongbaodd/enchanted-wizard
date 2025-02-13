@@ -1,12 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=18 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
 [ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="3_enfrd"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="4_coeem"]
 [ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="4_ofnbl"]
-[ext_resource type="PackedScene" uid="uid://hdcgpv528uqt" path="res://models/wall/Wall_27.glb" id="5_ja0ib"]
-[ext_resource type="PackedScene" uid="uid://cexkqbsa2hms2" path="res://models/table/Table_01.glb" id="6_ofrew"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_e68i2"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_sorbc"]
+[ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_ysiq7"]
 [ext_resource type="PackedScene" uid="uid://ctmxmjge58guw" path="res://instances/wand.tscn" id="7_go721"]
+[ext_resource type="Material" uid="uid://fk5opv0bvfae" path="res://materials/floor.tres" id="9_1mpnu"]
+[ext_resource type="PackedScene" uid="uid://qrdao4204hdn" path="res://instances/walls.tscn" id="9_qaygv"]
+[ext_resource type="PackedScene" uid="uid://cxbj44ycq8buh" path="res://instances/table.tscn" id="11_jktc6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2be3w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,8 +27,8 @@ tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_s76wf"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_pxwvd"]
-size = Vector3(2.04529, 0.906128, 1.27789)
+[sub_resource type="BoxShape3D" id="BoxShape3D_xyxe8"]
+size = Vector3(10, 0.01, 10)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ac03b")
@@ -36,10 +41,9 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.222317)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, -0.325679)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.326)
 
 [node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_jw6kp")]
 
@@ -51,6 +55,13 @@ pose = &"grip"
 [node name="LeftHand" parent="XROrigin3D/Left" instance=ExtResource("3_enfrd")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
+[node name="MovementDirect" parent="XROrigin3D/Left" instance=ExtResource("4_coeem")]
+
+[node name="MovementTurn" parent="XROrigin3D/Left" instance=ExtResource("5_e68i2")]
+step_turn_angle = 45.0
+
+[node name="FunctionPickup" parent="XROrigin3D/Left" instance=ExtResource("6_ysiq7")]
+
 [node name="Right" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.526563)
 tracker = &"right_hand"
@@ -59,69 +70,33 @@ pose = &"grip"
 [node name="RightHand" parent="XROrigin3D/Right" instance=ExtResource("4_ofnbl")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 0.01, 0, 0, 0, 10, 0, 0, 0)
-mesh = SubResource("BoxMesh_s76wf")
+[node name="MovementDirect" parent="XROrigin3D/Right" instance=ExtResource("4_coeem")]
 
-[node name="walls" type="Node3D" parent="."]
+[node name="MovementTurn" parent="XROrigin3D/Right" instance=ExtResource("5_e68i2")]
+turn_mode = 1
+step_turn_angle = 45.0
 
-[node name="back" type="Node3D" parent="walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33033, 0, 0)
+[node name="FunctionPickup" parent="XROrigin3D/Right" instance=ExtResource("6_ysiq7")]
 
-[node name="Wall_272" parent="walls/back" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97, 0, -4.94942)
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("5_sorbc")]
 
-[node name="Wall_273" parent="walls/back" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.973493, -0.010219, -5.07972)
-
-[node name="Wall_274" parent="walls/back" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92562, 0.00262725, -5.0401)
-
-[node name="right" type="Node3D" parent="walls"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0919532, 0, 0)
-
-[node name="Wall_272" parent="walls/right" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97, 0, -4.94942)
-
-[node name="Wall_273" parent="walls/right" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.973493, -0.010219, -5.07972)
-
-[node name="Wall_274" parent="walls/right" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92562, 0.00262725, -5.0401)
-
-[node name="front" type="Node3D" parent="walls"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0919532, 0, 0)
-
-[node name="Wall_272" parent="walls/front" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97, 0, -4.94942)
-
-[node name="Wall_273" parent="walls/front" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.973493, -0.010219, -5.07972)
-
-[node name="Wall_274" parent="walls/front" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92562, 0.00262725, -5.0401)
-
-[node name="left" type="Node3D" parent="walls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0919532, 0, 0)
-
-[node name="Wall_272" parent="walls/left" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97, 0, -4.94942)
-
-[node name="Wall_273" parent="walls/left" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.973493, -0.010219, -5.07972)
-
-[node name="Wall_274" parent="walls/left" instance=ExtResource("5_ja0ib")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92562, 0.00262725, -5.0401)
+[node name="walls" parent="." instance=ExtResource("9_qaygv")]
 
 [node name="wand" parent="." instance=ExtResource("7_go721")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128592, 1.18449, -0.504462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128592, 1.18449, 0.135509)
 
-[node name="Table" type="RigidBody3D" parent="."]
-gravity_scale = 0.0
+[node name="Table_012" parent="." instance=ExtResource("11_jktc6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.405717)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0774654, 0.455505, -0.513648)
-shape = SubResource("BoxShape3D_pxwvd")
+[node name="Floor" type="StaticBody3D" parent="."]
 
-[node name="table" parent="Table/CollisionShape3D" instance=ExtResource("6_ofrew")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000679739, -0.455505, -0.0266215)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+
+[node name="ground" type="MeshInstance3D" parent="Floor/MeshInstance3D"]
+transform = Transform3D(10, 0, 0, 0, 0.01, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("9_1mpnu")
+mesh = SubResource("BoxMesh_s76wf")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_xyxe8")

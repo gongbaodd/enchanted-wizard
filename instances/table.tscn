@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxbj44ycq8buh"]
+
+[ext_resource type="PackedScene" uid="uid://cexkqbsa2hms2" path="res://models/table/Table_01.glb" id="1_mhehu"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_c633l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u4mkg"]
+size = Vector3(2.0274, 0.895386, 1.23596)
+
+[node name="Table_012" instance=ExtResource("1_mhehu")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+physics_material_override = SubResource("PhysicsMaterial_c633l")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0039978, 0.447193, 0.00372314)
+shape = SubResource("BoxShape3D_u4mkg")
