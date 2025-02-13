@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:70aae77555bb48a3333f729e304f4dcac70be4840f1222fa330ee989d892daca
-size 2020
+[gd_scene load_steps=8 format=3 uid="uid://ctmxmjge58guw"]
+
+[ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_jcdoo"]
+[ext_resource type="Script" path="res://instances/wand.gd" id="2_pwi08"]
+[ext_resource type="PackedScene" uid="uid://65iud7hd2th1" path="res://models/wand/the_elder_wand.glb" id="2_sdilf"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_dac12"]
+[ext_resource type="PackedScene" uid="uid://5jpmkr8y2ysh" path="res://instances/fire_ball.tscn" id="3_p18yo"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="4_vtj21"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_trjis"]
+size = Vector3(0.362492, 0.0191603, 0.018)
+
+[node name="wand" instance=ExtResource("1_jcdoo")]
+script = ExtResource("2_pwi08")
+fireBall = ExtResource("3_p18yo")
+fireBallSpeed = 10.0
+
+[node name="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000417977, -9.48906e-05, 0)
+shape = SubResource("BoxShape3D_trjis")
+
+[node name="WandMesh" parent="." index="1" instance=ExtResource("2_sdilf")]
+
+[node name="GrabPointHandRight" parent="." index="2" instance=ExtResource("3_dac12")]
+transform = Transform3D(-0.0518305, 0.998656, 0, -0.998656, -0.0518305, 0, 0, 0, 1, -0.0838559, 0, -0.0817902)
+
+[node name="GrabPointHandLeft" parent="." index="3" instance=ExtResource("4_vtj21")]
+transform = Transform3D(-0.0343588, 0.99941, 0, -0.99941, -0.0343588, 0, 0, 0, 1, -0.0648133, -0.0194174, -0.113125)
+
+[node name="cooldown" type="Timer" parent="." index="4"]
+wait_time = 0.3
+one_shot = true
+
+[node name="SpawnPoint" type="Marker3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.177419, 0, 0)
+
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
+
+[editable path="WandMesh"]
