@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=24 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="12_q3qqm"]
 [ext_resource type="PackedScene" uid="uid://65iud7hd2th1" path="res://models/wand/the_elder_wand.glb" id="13_lmd4v"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="14_8uvor"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="15_fxaho"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2be3w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -33,6 +34,9 @@ tonemap_mode = 2
 size = Vector3(10, 0.01, 10)
 
 [sub_resource type="BoxMesh" id="BoxMesh_548ji"]
+
+[sub_resource type="Resource" id="Resource_uf0y6"]
+script = ExtResource("15_fxaho")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_466fv"]
 
@@ -123,7 +127,9 @@ visible = false
 mesh = SubResource("BoxMesh_548ji")
 
 [node name="GrabPointHandRight" parent="wand" instance=ExtResource("14_8uvor")]
-transform = Transform3D(-0.0831212, 0.996539, -4.73447e-08, -0.996539, -0.0831213, -4.35601e-08, -4.73447e-08, 4.35601e-08, 0.999999, -0.0759145, 0.00480306, -0.0964252)
+transform = Transform3D(-0.000848314, -0.0723278, -0.997379, 0.999931, -0.0117284, 4.37084e-08, -0.0116978, -0.99731, 0.0723328, -0.0527226, -0.0220441, 0.0841545)
+visible = true
+hand_pose = SubResource("Resource_uf0y6")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="wand"]
 shape = SubResource("BoxShape3D_466fv")
