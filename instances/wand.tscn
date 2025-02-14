@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctmxmjge58guw"]
+[gd_scene load_steps=10 format=3 uid="uid://ctmxmjge58guw"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_jcdoo"]
 [ext_resource type="Script" path="res://instances/wand.gd" id="2_pwi08"]
@@ -10,10 +10,16 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_trjis"]
 size = Vector3(0.362492, 0.0191603, 0.018)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6qhbb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_n7m08"]
+
 [node name="wand" instance=ExtResource("1_jcdoo")]
+collision_layer = 7
 script = ExtResource("2_pwi08")
 fireBall = ExtResource("3_p18yo")
 fireBallSpeed = 10.0
+picked_up_layer = 65537
 
 [node name="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000417977, -9.48906e-05, 0)
@@ -33,6 +39,13 @@ one_shot = true
 
 [node name="SpawnPoint" type="Marker3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.177419, 0, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="6"]
+shape = SubResource("BoxShape3D_6qhbb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="7"]
+visible = false
+mesh = SubResource("BoxMesh_n7m08")
 
 [connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=22 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
@@ -8,10 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_e68i2"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_sorbc"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_ysiq7"]
-[ext_resource type="PackedScene" uid="uid://ctmxmjge58guw" path="res://instances/wand.tscn" id="7_go721"]
 [ext_resource type="Material" uid="uid://fk5opv0bvfae" path="res://materials/floor.tres" id="9_1mpnu"]
 [ext_resource type="PackedScene" uid="uid://qrdao4204hdn" path="res://instances/walls.tscn" id="9_qaygv"]
 [ext_resource type="PackedScene" uid="uid://cxbj44ycq8buh" path="res://instances/table.tscn" id="11_jktc6"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="12_q3qqm"]
+[ext_resource type="PackedScene" uid="uid://65iud7hd2th1" path="res://models/wand/the_elder_wand.glb" id="13_lmd4v"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="14_8uvor"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2be3w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,6 +32,10 @@ tonemap_mode = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_xyxe8"]
 size = Vector3(10, 0.01, 10)
 
+[sub_resource type="BoxMesh" id="BoxMesh_548ji"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_466fv"]
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ac03b")
 
@@ -41,14 +47,30 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6565, 2.75117)
 
 [node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.326)
 
 [node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_jw6kp")]
 
+[node name="Left" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
+tracker = &"left_hand"
+pose = &"grip"
+
+[node name="LeftHand" parent="XROrigin3D/Left" instance=ExtResource("3_enfrd")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="MovementDirect" parent="XROrigin3D/Left" instance=ExtResource("4_coeem")]
+
+[node name="MovementTurn" parent="XROrigin3D/Left" instance=ExtResource("5_e68i2")]
+step_turn_angle = 45.0
+
+[node name="FunctionPickup" parent="XROrigin3D/Left" instance=ExtResource("6_ysiq7")]
+
 [node name="Right" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.526563)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 pose = &"grip"
 
@@ -63,41 +85,45 @@ step_turn_angle = 45.0
 
 [node name="FunctionPickup" parent="XROrigin3D/Right" instance=ExtResource("6_ysiq7")]
 
-[node name="Left" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-tracker = &"left_hand"
-pose = &"grip"
-
-[node name="LeftHand" parent="XROrigin3D/Left" instance=ExtResource("3_enfrd")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
-[node name="MovementDirect" parent="XROrigin3D/Left" instance=ExtResource("4_coeem")]
-
-[node name="MovementTurn" parent="XROrigin3D/Left" instance=ExtResource("5_e68i2")]
-step_turn_angle = 45.0
-
-[node name="FunctionPickup" parent="XROrigin3D/Left" instance=ExtResource("6_ysiq7")]
-
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("5_sorbc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0642719, 0.360578, 0.922885)
 collision_layer = 524289
 
 [node name="walls" parent="." instance=ExtResource("9_qaygv")]
-
-[node name="wand" parent="." instance=ExtResource("7_go721")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128592, 1.18449, 0.135509)
+visible = false
 
 [node name="Table_012" parent="." instance=ExtResource("11_jktc6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.405717)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00866747)
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor01" type="StaticBody3D" parent="."]
+collision_layer = 1048575
+collision_mask = 1048575
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor01"]
 
-[node name="ground" type="MeshInstance3D" parent="Floor/MeshInstance3D"]
+[node name="ground" type="MeshInstance3D" parent="Floor01/MeshInstance3D"]
 transform = Transform3D(10, 0, 0, 0, 0.01, 0, 0, 0, 10, 0, 0, 0)
 material_override = ExtResource("9_1mpnu")
 mesh = SubResource("BoxMesh_s76wf")
 skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor01"]
 shape = SubResource("BoxShape3D_xyxe8")
+
+[node name="wand" type="RigidBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.50715, -0.0457888)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("12_q3qqm")
+
+[node name="Sketchfab_Scene" parent="wand" instance=ExtResource("13_lmd4v")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wand"]
+visible = false
+mesh = SubResource("BoxMesh_548ji")
+
+[node name="GrabPointHandRight" parent="wand" instance=ExtResource("14_8uvor")]
+transform = Transform3D(-0.0831212, 0.996539, -4.73447e-08, -0.996539, -0.0831213, -4.35601e-08, -4.73447e-08, 4.35601e-08, 0.999999, -0.0759145, 0.00480306, -0.0964252)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="wand"]
+shape = SubResource("BoxShape3D_466fv")
