@@ -1,27 +1,17 @@
 extends XRToolsPickable
 
-@export var fireBall: PackedScene
-@export var fireBallSpeed: float = 10.0
-
-var canFire = true
+@export var FireBall: PackedScene
+@export var ballSpeed: float = 10.0
 
 func action():
 	super.action()
+	_spawnFireBall()
 	
-	if canFire:
-		_spawnFireball()
-		canFire = false
-		$cooldown.start()
-
-func _spawnFireball():
-	if fireBall:
-		var newFireBall: RigidBody3D = fireBall.instantiate()
-		if (newFireBall):
-			newFireBall.set_as_toplevel(true)
-			add_child(newFireBall)
-			newFireBall.transform = $SpawnPoint.global_position
-			newFireBall.linear_velocity = $SpawnPoint.position.z * fireBallSpeed
-
-
-func _on_cooldown_timeout() -> void:
-	canFire = true
+func _spawnFireBall():
+	var newFireBall: RigidBody3D = FireBall.instantiate()
+	if (newFireBall):
+		#newFireBall.set_as_toplevel(true)
+		add_child(newFireBall)
+		newFireBall.global_position = $SpawnPos.global_position
+		newFireBall.linear_velocity.z = ballSpeed * $SpawnPos.position.z
+		

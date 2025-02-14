@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://ctmxmjge58guw"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_jcdoo"]
-[ext_resource type="Script" path="res://instances/wand.gd" id="2_pwi08"]
+[ext_resource type="Script" path="res://instances/wandTest.gd" id="2_pwi08"]
 [ext_resource type="PackedScene" uid="uid://65iud7hd2th1" path="res://models/wand/the_elder_wand.glb" id="2_sdilf"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_dac12"]
 [ext_resource type="PackedScene" uid="uid://5jpmkr8y2ysh" path="res://instances/fire_ball.tscn" id="3_p18yo"]
