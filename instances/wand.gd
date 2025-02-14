@@ -13,5 +13,6 @@ func _spawnFireBall():
 		#newFireBall.set_as_toplevel(true)
 		add_child(newFireBall)
 		newFireBall.global_position = $SpawnPos.global_position
-		newFireBall.linear_velocity.z = ballSpeed * $SpawnPos.position.z
+		var forwarDir = $SpawnPos.global_transform.basis.x.normalized()
+		newFireBall.linear_velocity += forwarDir * ballSpeed
 		
