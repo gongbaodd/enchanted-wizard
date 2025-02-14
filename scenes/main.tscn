@@ -47,21 +47,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, -0.326)
 
 [node name="VRCommonShaderCache" parent="XROrigin3D/XRCamera3D" instance=ExtResource("2_jw6kp")]
 
-[node name="Left" type="XRController3D" parent="XROrigin3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
-tracker = &"left_hand"
-pose = &"grip"
-
-[node name="LeftHand" parent="XROrigin3D/Left" instance=ExtResource("3_enfrd")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-
-[node name="MovementDirect" parent="XROrigin3D/Left" instance=ExtResource("4_coeem")]
-
-[node name="MovementTurn" parent="XROrigin3D/Left" instance=ExtResource("5_e68i2")]
-step_turn_angle = 45.0
-
-[node name="FunctionPickup" parent="XROrigin3D/Left" instance=ExtResource("6_ysiq7")]
-
 [node name="Right" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.526563)
 tracker = &"right_hand"
@@ -78,7 +63,23 @@ step_turn_angle = 45.0
 
 [node name="FunctionPickup" parent="XROrigin3D/Right" instance=ExtResource("6_ysiq7")]
 
+[node name="Left" type="XRController3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+tracker = &"left_hand"
+pose = &"grip"
+
+[node name="LeftHand" parent="XROrigin3D/Left" instance=ExtResource("3_enfrd")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="MovementDirect" parent="XROrigin3D/Left" instance=ExtResource("4_coeem")]
+
+[node name="MovementTurn" parent="XROrigin3D/Left" instance=ExtResource("5_e68i2")]
+step_turn_angle = 45.0
+
+[node name="FunctionPickup" parent="XROrigin3D/Left" instance=ExtResource("6_ysiq7")]
+
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("5_sorbc")]
+collision_layer = 524289
 
 [node name="walls" parent="." instance=ExtResource("9_qaygv")]
 
