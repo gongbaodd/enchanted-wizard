@@ -115,7 +115,7 @@ shape = SubResource("BoxShape3D_xyxe8")
 [node name="wand" parent="." instance=ExtResource("12_12lnl")]
 
 [node name="Balloon_Ghost" parent="." instance=ExtResource("18_xwoot")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79507, 3.80983, -1.11801)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35261, 1.45838, -1.11801)
 
 [node name="Bun" parent="." instance=ExtResource("19_3y66n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24393, 0.102578, -2.12255)

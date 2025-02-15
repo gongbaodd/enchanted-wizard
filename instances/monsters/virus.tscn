@@ -7,10 +7,11 @@ radius = 0.257724
 
 [node name="Virus" type="Node3D"]
 
-[node name="BeholderPolyartDefault2" parent="." instance=ExtResource("1_qsbwi")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+
+[node name="BeholderPolyartDefault2" parent="RigidBody3D" instance=ExtResource("1_qsbwi")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717146, 0)

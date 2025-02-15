@@ -8,9 +8,10 @@ height = 0.776908
 
 [node name="RedGhost" type="Node3D"]
 
-[node name="LittleGhost_LP (4)2" parent="." instance=ExtResource("1_4vedc")]
-
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+gravity_scale = 0.0
+
+[node name="LittleGhost_LP (4)2" parent="RigidBody3D" instance=ExtResource("1_4vedc")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.403394, 0)

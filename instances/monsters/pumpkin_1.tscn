@@ -7,9 +7,9 @@ radius = 0.292337
 
 [node name="Pumpkin1" type="Node3D"]
 
-[node name="pumpkin-carved-lit-c2" parent="." instance=ExtResource("1_44hax")]
-
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="pumpkin-carved-lit-c2" parent="RigidBody3D" instance=ExtResource("1_44hax")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.273835, 0)
