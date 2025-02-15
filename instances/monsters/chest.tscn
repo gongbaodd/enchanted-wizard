@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cesn6bojgy72q"]
+[gd_scene load_steps=5 format=3 uid="uid://cesn6bojgy72q"]
 
+[ext_resource type="Script" path="res://scripts/MonsterMovement.gd" id="1_3omi1"]
 [ext_resource type="Script" path="res://scripts/Shootable.gd" id="1_5meuy"]
 [ext_resource type="PackedScene" uid="uid://cslsv8r7mon7d" path="res://models/monsters/chest/ChestMonsterPolyartDefault.glb" id="1_j423v"]
 
@@ -7,6 +8,7 @@
 size = Vector3(0.537598, 0.7099, 0.478271)
 
 [node name="Chest" type="Node3D"]
+script = ExtResource("1_3omi1")
 
 [node name="RigidBody3D" type="Area3D" parent="."]
 script = ExtResource("1_5meuy")

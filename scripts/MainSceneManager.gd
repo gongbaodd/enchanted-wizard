@@ -23,6 +23,7 @@ func _spawn_monsters():
 	var pos = _get_random_pos()
 	var new_monster: Node3D = monsters.pick_random().instantiate()
 	new_monster.global_transform.origin = pos
+	new_monster.rotate_y(randf_range(0, 2*PI))
 	add_child(new_monster)
 	
 func _get_random_pos():

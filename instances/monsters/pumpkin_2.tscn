@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdha2nt7f4df3"]
+[gd_scene load_steps=5 format=3 uid="uid://cdha2nt7f4df3"]
 
 [ext_resource type="Script" path="res://scripts/Shootable.gd" id="1_am0mo"]
+[ext_resource type="Script" path="res://scripts/MonsterMovement.gd" id="1_f8xsg"]
 [ext_resource type="PackedScene" uid="uid://dj4chwvicd38x" path="res://models/monsters/pumpkin2/pumpkin-carved-lit-a.glb" id="1_jy3so"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_wuvw8"]
 radius = 0.235313
 
 [node name="Pumpkin2" type="Node3D"]
+script = ExtResource("1_f8xsg")
 
 [node name="RigidBody3D" type="Area3D" parent="."]
 script = ExtResource("1_am0mo")
