@@ -9,6 +9,7 @@ radius = 0.257602
 
 [node name="Bun" type="Node3D"]
 script = ExtResource("1_aes4g")
+metadata/is_monster = true
 
 [node name="RigidBody3D" type="Area3D" parent="."]
 script = ExtResource("1_bk44f")

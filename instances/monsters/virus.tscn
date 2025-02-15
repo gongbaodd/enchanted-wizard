@@ -9,6 +9,7 @@ radius = 0.257724
 
 [node name="Virus" type="Node3D"]
 script = ExtResource("1_l6fnw")
+metadata/is_monster = true
 
 [node name="RigidBody3D" type="Area3D" parent="."]
 script = ExtResource("1_8vk23")

@@ -10,6 +10,7 @@ height = 0.881491
 
 [node name="BlueGhost" type="Node3D"]
 script = ExtResource("1_ue0wh")
+metadata/is_monster = true
 
 [node name="RigidBody3D" type="Area3D" parent="."]
 script = ExtResource("1_bjg2e")

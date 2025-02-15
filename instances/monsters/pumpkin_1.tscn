@@ -9,6 +9,7 @@ radius = 0.292337
 
 [node name="Pumpkin1" type="Node3D"]
 script = ExtResource("1_uygge")
+metadata/is_monster = true
 
 [node name="RigidBody3D" type="Area3D" parent="."]
 script = ExtResource("1_45vp4")

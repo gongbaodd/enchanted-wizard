@@ -9,6 +9,7 @@ radius = 0.212729
 
 [node name="Balloon_Ghost" type="Node3D"]
 script = ExtResource("1_dwt2k")
+metadata/is_monster = true
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("1_hpid0")

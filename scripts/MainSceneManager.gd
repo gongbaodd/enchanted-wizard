@@ -24,6 +24,7 @@ func _spawn_monsters():
 	var new_monster: Node3D = monsters.pick_random().instantiate()
 	new_monster.global_transform.origin = pos
 	new_monster.rotate_y(randf_range(0, 2*PI))
+	new_monster.set_meta("is_monster", true)
 	add_child(new_monster)
 	
 func _get_random_pos():
@@ -40,3 +41,8 @@ func _get_random_pos():
 func _on_timer_timeout() -> void:
 		_spawn_monsters()
 	
+
+func _on_area_3d_body_exited(body: Node3D) -> void:
+	if body.has_meta("is_monster") and body.get_meta("is_monster"):
+		body.queue_free()
+		print("remove monster")
