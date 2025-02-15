@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var monsters: Array[PackedScene]
+
 var xr_interface: XRInterface
 
 func _ready():
@@ -14,3 +16,6 @@ func _ready():
 		get_viewport().use_xr = true
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
+
+func _spawn_monsters():
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=28 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
@@ -39,8 +39,12 @@ tonemap_mode = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_xyxe8"]
 size = Vector3(10, 0.01, 10)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_gsc5l"]
+size = Vector3(9.69312, 3.88971, 9.94818)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_ac03b")
+monsters = Array[PackedScene]([ExtResource("18_xwoot"), ExtResource("21_putv1"), ExtResource("19_3y66n"), ExtResource("20_alo2p"), ExtResource("18_i2856"), ExtResource("19_yq4te"), ExtResource("22_wvlrc"), ExtResource("20_btdct"), ExtResource("21_7v85a")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qch1l")
@@ -114,29 +118,8 @@ shape = SubResource("BoxShape3D_xyxe8")
 
 [node name="wand" parent="." instance=ExtResource("12_12lnl")]
 
-[node name="Balloon_Ghost" parent="." instance=ExtResource("18_xwoot")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35261, 1.45838, -1.11801)
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="Bun" parent="." instance=ExtResource("19_3y66n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24393, 0.102578, -2.12255)
-
-[node name="Chest" parent="." instance=ExtResource("20_alo2p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32694, 0, -2.4737)
-
-[node name="BlueGhost" parent="." instance=ExtResource("21_putv1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83794, 0, -1.48818)
-
-[node name="RedGhost" parent="." instance=ExtResource("22_wvlrc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14667, 0.414276, -2.06338)
-
-[node name="Pumpkin1" parent="." instance=ExtResource("18_i2856")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88832, 0, -1.54506)
-
-[node name="Pumpkin2" parent="." instance=ExtResource("19_yq4te")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18092, 0, -2.88246)
-
-[node name="Turtle" parent="." instance=ExtResource("20_btdct")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2593, 0, -2.99446)
-
-[node name="Virus" parent="." instance=ExtResource("21_7v85a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74436, 0.0407, -3.15392)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.098999, 1.98105, -0.0308533)
+shape = SubResource("BoxShape3D_gsc5l")
