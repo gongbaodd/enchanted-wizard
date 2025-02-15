@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://3ghyhteol5db"]
+[gd_scene load_steps=4 format=3 uid="uid://3ghyhteol5db"]
 
+[ext_resource type="Script" path="res://scripts/Shootable.gd" id="1_8vk23"]
 [ext_resource type="PackedScene" uid="uid://bik7s3ie2m062" path="res://models/monsters/virus/BeholderPolyartDefault.glb" id="1_qsbwi"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_us5hn"]
@@ -7,8 +8,8 @@ radius = 0.257724
 
 [node name="Virus" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-gravity_scale = 0.0
+[node name="RigidBody3D" type="Area3D" parent="."]
+script = ExtResource("1_8vk23")
 
 [node name="BeholderPolyartDefault2" parent="RigidBody3D" instance=ExtResource("1_qsbwi")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -16,3 +17,5 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.717146, 0)
 shape = SubResource("SphereShape3D_us5hn")
+
+[connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]

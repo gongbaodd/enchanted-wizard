@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dnawtbj1e40m8"]
+[gd_scene load_steps=4 format=3 uid="uid://dnawtbj1e40m8"]
 
 [ext_resource type="PackedScene" uid="uid://busert1p8os7n" path="res://models/monsters/turtle/TurtleShellPolyart.glb" id="1_o6j7b"]
+[ext_resource type="Script" path="res://scripts/Shootable.gd" id="1_s2gl3"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6737f"]
 radius = 0.242784
@@ -8,6 +9,7 @@ radius = 0.242784
 [node name="Turtle" type="Node3D"]
 
 [node name="RigidBody3D" type="Area3D" parent="."]
+script = ExtResource("1_s2gl3")
 
 [node name="TurtleShellPolyart2" parent="RigidBody3D" instance=ExtResource("1_o6j7b")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
@@ -15,3 +17,5 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26893, 0)
 shape = SubResource("SphereShape3D_6737f")
+
+[connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]

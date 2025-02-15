@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ckt72dedah6ur"]
+[gd_scene load_steps=4 format=3 uid="uid://ckt72dedah6ur"]
 
 [ext_resource type="PackedScene" uid="uid://ptmcsco0h8yj" path="res://models/monsters/ghostRedHatAxe/LittleGhost_LP (4).glb" id="1_4vedc"]
+[ext_resource type="Script" path="res://scripts/Shootable.gd" id="1_x01a1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mnmlo"]
 radius = 0.212903
@@ -9,9 +10,12 @@ height = 0.776908
 [node name="RedGhost" type="Node3D"]
 
 [node name="RigidBody3D" type="Area3D" parent="."]
+script = ExtResource("1_x01a1")
 
 [node name="LittleGhost_LP (4)2" parent="RigidBody3D" instance=ExtResource("1_4vedc")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.403394, 0)
 shape = SubResource("CapsuleShape3D_mnmlo")
+
+[connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]
