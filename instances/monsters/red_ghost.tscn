@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckt72dedah6ur"]
+
+[ext_resource type="PackedScene" uid="uid://ptmcsco0h8yj" path="res://models/monsters/ghostRedHatAxe/LittleGhost_LP (4).glb" id="1_4vedc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mnmlo"]
+radius = 0.212903
+height = 0.776908
+
+[node name="RedGhost" type="Node3D"]
+
+[node name="LittleGhost_LP (4)2" parent="." instance=ExtResource("1_4vedc")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.403394, 0)
+shape = SubResource("CapsuleShape3D_mnmlo")

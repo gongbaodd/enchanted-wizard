@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://de0hj1oykbujp"]
+
+[ext_resource type="Script" path="res://instances/wand.gd" id="1_jp5b6"]
+[ext_resource type="PackedScene" uid="uid://5jpmkr8y2ysh" path="res://instances/fire_ball.tscn" id="2_olppb"]
+[ext_resource type="PackedScene" uid="uid://65iud7hd2th1" path="res://models/wand/the_elder_wand.glb" id="3_b1l78"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="4_jvc7i"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="5_nggan"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="6_i2e2w"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_548ji"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_466fv"]
+
+[sub_resource type="Resource" id="Resource_uf0y6"]
+script = ExtResource("5_nggan")
+
+[node name="wand" type="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.50715, -0.0457888)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_jp5b6")
+FireBall = ExtResource("2_olppb")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("3_b1l78")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_548ji")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_466fv")
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("4_jvc7i")]
+transform = Transform3D(-0.000848314, -0.0723278, -0.997379, 0.999931, -0.0117284, 4.37084e-08, -0.0116978, -0.99731, 0.0723328, -0.0527226, -0.0220441, 0.0841545)
+visible = true
+hand_pose = SubResource("Resource_uf0y6")
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("6_i2e2w")]
+transform = Transform3D(0.00858701, -4.37113e-08, -0.999963, -0.999961, -0.00193731, -0.008587, -0.00193724, 0.999998, -1.66794e-05, -0.0547384, -0.0273693, -0.137666)
+visible = true
+
+[node name="SpawnPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179554, 0, 7.84854e-09)
