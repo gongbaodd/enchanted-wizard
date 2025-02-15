@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=28 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="15_fxaho"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="16_p33bh"]
 [ext_resource type="PackedScene" uid="uid://cvdjn0nc1htb1" path="res://instances/monsters/balloon_ghost.tscn" id="18_xwoot"]
+[ext_resource type="PackedScene" uid="uid://dv4v1w7e7xfdq" path="res://instances/monsters/bun.tscn" id="19_3y66n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2be3w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -146,3 +147,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179554, 0, 7.84854e-09)
 
 [node name="Balloon_Ghost" parent="." instance=ExtResource("18_xwoot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.79507, 3.80983, -1.11801)
+
+[node name="Bun" parent="." instance=ExtResource("19_3y66n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24393, 0.255464, -2.12255)

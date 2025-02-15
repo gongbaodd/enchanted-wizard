@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv4v1w7e7xfdq"]
+
+[ext_resource type="PackedScene" uid="uid://b2fc7c5xr8nxu" path="res://models/monsters/bun/SlimePolyart.glb" id="1_1gi1h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_57l2m"]
+radius = 0.257602
+
+[node name="Bun" type="Node3D"]
+
+[node name="SlimePolyart2" parent="." instance=ExtResource("1_1gi1h")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204961, 0)
+shape = SubResource("SphereShape3D_57l2m")
