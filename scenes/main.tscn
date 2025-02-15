@@ -33,7 +33,7 @@ sky = SubResource("Sky_lvehk")
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsc5l"]
-size = Vector3(9.69312, 3.88971, 9.94818)
+size = Vector3(7.64134, 3.07816, 7.4691)
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("area")]
 script = ExtResource("1_ac03b")
@@ -95,7 +95,7 @@ collision_layer = 524289
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.098999, 1.98105, -0.0308533)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0574102, 2.38683, 0.157798)
 shape = SubResource("BoxShape3D_gsc5l")
 
 [node name="Node3D" parent="." instance=ExtResource("19_8kpxo")]
