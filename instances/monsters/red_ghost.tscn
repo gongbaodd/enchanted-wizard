@@ -8,8 +8,7 @@ height = 0.776908
 
 [node name="RedGhost" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-gravity_scale = 0.0
+[node name="RigidBody3D" type="Area3D" parent="."]
 
 [node name="LittleGhost_LP (4)2" parent="RigidBody3D" instance=ExtResource("1_4vedc")]
 

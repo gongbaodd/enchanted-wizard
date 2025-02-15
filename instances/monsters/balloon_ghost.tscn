@@ -7,12 +7,11 @@ radius = 0.212729
 
 [node name="Balloon_Ghost" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-gravity_scale = 0.0
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="Balloon_Ghost_Parts2" parent="RigidBody3D" instance=ExtResource("1_ms14q")]
+[node name="Balloon_Ghost_Parts2" parent="Area3D" instance=ExtResource("1_ms14q")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000791728, 0.259514, 0)
 shape = SubResource("SphereShape3D_g4p6h")

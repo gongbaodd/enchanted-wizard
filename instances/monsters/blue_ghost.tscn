@@ -8,8 +8,7 @@ height = 0.881491
 
 [node name="BlueGhost" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-gravity_scale = 0.0
+[node name="RigidBody3D" type="Area3D" parent="."]
 
 [node name="LittleGhost_LP (7)2" parent="RigidBody3D" instance=ExtResource("1_dgi7a")]
 

@@ -7,7 +7,7 @@ radius = 0.242784
 
 [node name="Turtle" type="Node3D"]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="Area3D" parent="."]
 
 [node name="TurtleShellPolyart2" parent="RigidBody3D" instance=ExtResource("1_o6j7b")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
