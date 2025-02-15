@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var monsters: Array[PackedScene]
+@export var area: Area3D
 
 var xr_interface: XRInterface
 
@@ -14,8 +15,27 @@ func _ready():
 
 		# Change our main viewport to output to the HMD
 		get_viewport().use_xr = true
+		
 	else:
 		print("OpenXR not initialized, please check if your headset is connected")
 
 func _spawn_monsters():
-	pass
+	var pos = _get_random_pos()
+	var new_monster: Node3D = monsters.pick_random().instantiate()
+	new_monster.global_transform.origin = pos
+	add_child(new_monster)
+	
+func _get_random_pos():
+	var shape: Shape3D = area.get_child(0).shape
+	var extents = shape.size * 0.5
+	var random_offset = Vector3(
+		randf_range(-extents.x, extents.x),
+		randf_range(-extents.y, extents.y),
+		randf_range(-extents.z, extents.z),		
+	)
+	return area.global_transform.origin + random_offset
+
+
+func _on_timer_timeout() -> void:
+		_spawn_monsters()
+	

@@ -35,9 +35,10 @@ tonemap_mode = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsc5l"]
 size = Vector3(9.69312, 3.88971, 9.94818)
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("area")]
 script = ExtResource("1_ac03b")
 monsters = Array[PackedScene]([ExtResource("18_xwoot"), ExtResource("21_putv1"), ExtResource("19_3y66n"), ExtResource("20_alo2p"), ExtResource("18_i2856"), ExtResource("19_yq4te"), ExtResource("22_wvlrc"), ExtResource("20_btdct"), ExtResource("21_7v85a")])
+area = NodePath("Area3D")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qch1l")
@@ -98,3 +99,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.098999, 1.98105, -0.030853
 shape = SubResource("BoxShape3D_gsc5l")
 
 [node name="Node3D" parent="." instance=ExtResource("19_8kpxo")]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
