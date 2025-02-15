@@ -32,7 +32,7 @@ func _get_random_pos():
 	var extents = shape.size * 0.5
 	var random_offset = Vector3(
 		randf_range(-extents.x, extents.x),
-		randf_range(-extents.y, extents.y),
+		randf_range(0, extents.y),
 		randf_range(-extents.z, extents.z),		
 	)
 	return area.global_transform.origin + random_offset
@@ -45,4 +45,9 @@ func _on_timer_timeout() -> void:
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	if body.has_meta("is_monster") and body.get_meta("is_monster"):
 		body.queue_free()
-		print("remove monster")
+
+func _process(delta: float) -> void:
+	Global.currentMonsterCount = 0
+	for child in get_children():
+		if child.has_meta("is_monster") and child.get_meta("is_monster"):
+			Global.currentMonsterCount+=1

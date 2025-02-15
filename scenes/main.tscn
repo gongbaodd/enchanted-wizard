@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=25 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cdha2nt7f4df3" path="res://instances/monsters/pumpkin_2.tscn" id="19_yq4te"]
 [ext_resource type="PackedScene" uid="uid://cesn6bojgy72q" path="res://instances/monsters/chest.tscn" id="20_alo2p"]
 [ext_resource type="PackedScene" uid="uid://dnawtbj1e40m8" path="res://instances/monsters/turtle.tscn" id="20_btdct"]
+[ext_resource type="PackedScene" uid="uid://cq7ttoxc5sdvp" path="res://instances/screen.tscn" id="20_ds01o"]
 [ext_resource type="PackedScene" uid="uid://3ghyhteol5db" path="res://instances/monsters/virus.tscn" id="21_7v85a"]
 [ext_resource type="PackedScene" uid="uid://brrei42umof4k" path="res://instances/monsters/blue_ghost.tscn" id="21_putv1"]
 [ext_resource type="PackedScene" uid="uid://ckt72dedah6ur" path="res://instances/monsters/red_ghost.tscn" id="22_wvlrc"]
@@ -102,6 +103,9 @@ shape = SubResource("BoxShape3D_gsc5l")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Screen" parent="." instance=ExtResource("20_ds01o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283719, 1.65401, -4.68352)
 
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

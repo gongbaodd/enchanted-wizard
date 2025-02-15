@@ -7,3 +7,6 @@ extends Node3D
 func _process(delta: float) -> void:
 	var forward_dir = global_transform.basis.z.normalized()
 	position += forward_dir * speed * delta
+	
+	if abs(position.x) > 5 or abs(position.z) > 5:
+		queue_free()

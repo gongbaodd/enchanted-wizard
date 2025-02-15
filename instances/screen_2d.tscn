@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt2mfecrxnx4f"]
+
+[ext_resource type="Script" path="res://scripts/monster_count.gd" id="1_lm4by"]
+[ext_resource type="Script" path="res://instances/caught_count.gd" id="2_shwpe"]
+
+[node name="Screen2d" type="Node2D"]
+
+[node name="hint" type="Label" parent="."]
+offset_left = 175.0
+offset_top = 2.0
+offset_right = 467.0
+offset_bottom = 134.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Grab your wand 
+and 
+shoot the monsters!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="monsterCount" type="Label" parent="."]
+offset_right = 130.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "0
+here"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_lm4by")
+
+[node name="caughtCount" type="Label" parent="."]
+offset_left = 487.0
+offset_top = 2.0
+offset_right = 603.0
+offset_bottom = 141.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "0
+Caught"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_shwpe")

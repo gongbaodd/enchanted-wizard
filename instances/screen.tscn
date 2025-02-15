@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq7ttoxc5sdvp"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_sonne"]
+[ext_resource type="PackedScene" uid="uid://bt2mfecrxnx4f" path="res://instances/screen_2d.tscn" id="2_krjmj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_e2inu"]
+size = Vector2(5, 3)
+
+[node name="Screen" type="Node3D"]
+
+[node name="screen" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("QuadMesh_e2inu")
+
+[node name="Viewport2Din3D" parent="screen" instance=ExtResource("1_sonne")]
+transform = Transform3D(1.6, 0, 0, 0, 1.013, 0, 0, 0, 1.013, 0, 0, 0)
+scene = ExtResource("2_krjmj")
+viewport_size = Vector2(650, 150)
+scene_properties_keys = PackedStringArray()
