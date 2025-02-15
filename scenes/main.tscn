@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=27 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://qrdao4204hdn" path="res://instances/walls.tscn" id="9_qaygv"]
 [ext_resource type="PackedScene" uid="uid://cxbj44ycq8buh" path="res://instances/table.tscn" id="11_jktc6"]
 [ext_resource type="PackedScene" uid="uid://de0hj1oykbujp" path="res://instances/wand.tscn" id="12_12lnl"]
-[ext_resource type="Script" path="res://scripts/Destoryables.gd" id="14_i5pse"]
 [ext_resource type="PackedScene" uid="uid://dagrwykx38x4j" path="res://instances/monsters/pumpkin_1.tscn" id="18_i2856"]
 [ext_resource type="PackedScene" uid="uid://cvdjn0nc1htb1" path="res://instances/monsters/balloon_ghost.tscn" id="18_xwoot"]
 [ext_resource type="PackedScene" uid="uid://dv4v1w7e7xfdq" path="res://instances/monsters/bun.tscn" id="19_3y66n"]
@@ -117,36 +116,27 @@ shape = SubResource("BoxShape3D_xyxe8")
 
 [node name="Balloon_Ghost" parent="." instance=ExtResource("18_xwoot")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35261, 1.45838, -1.11801)
-script = ExtResource("14_i5pse")
 
 [node name="Bun" parent="." instance=ExtResource("19_3y66n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24393, 0.102578, -2.12255)
-script = ExtResource("14_i5pse")
 
 [node name="Chest" parent="." instance=ExtResource("20_alo2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32694, 0, -2.4737)
-script = ExtResource("14_i5pse")
 
 [node name="BlueGhost" parent="." instance=ExtResource("21_putv1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.83794, 0, -1.48818)
-script = ExtResource("14_i5pse")
 
 [node name="RedGhost" parent="." instance=ExtResource("22_wvlrc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.14667, 0.414276, -2.06338)
-script = ExtResource("14_i5pse")
 
 [node name="Pumpkin1" parent="." instance=ExtResource("18_i2856")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.88832, 0, -1.54506)
-script = ExtResource("14_i5pse")
 
 [node name="Pumpkin2" parent="." instance=ExtResource("19_yq4te")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18092, 0, -2.88246)
-script = ExtResource("14_i5pse")
 
 [node name="Turtle" parent="." instance=ExtResource("20_btdct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2593, 0, -2.99446)
-script = ExtResource("14_i5pse")
 
 [node name="Virus" parent="." instance=ExtResource("21_7v85a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74436, 0.0407, -3.15392)
-script = ExtResource("14_i5pse")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvdjn0nc1htb1"]
+[gd_scene load_steps=4 format=3 uid="uid://cvdjn0nc1htb1"]
 
+[ext_resource type="Script" path="res://scripts/Shootable.gd" id="1_hpid0"]
 [ext_resource type="PackedScene" uid="uid://bkmagdhq6hqmx" path="res://models/monsters/balloon/Balloon_Ghost_Parts.glb" id="1_ms14q"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_g4p6h"]
@@ -8,6 +9,7 @@ radius = 0.212729
 [node name="Balloon_Ghost" type="Node3D"]
 
 [node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_hpid0")
 
 [node name="Balloon_Ghost_Parts2" parent="Area3D" instance=ExtResource("1_ms14q")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -15,3 +17,5 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000791728, 0.259514, 0)
 shape = SubResource("SphereShape3D_g4p6h")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
