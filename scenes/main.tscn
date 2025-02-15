@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=27 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cdha2nt7f4df3" path="res://instances/monsters/pumpkin_2.tscn" id="19_yq4te"]
 [ext_resource type="PackedScene" uid="uid://cesn6bojgy72q" path="res://instances/monsters/chest.tscn" id="20_alo2p"]
 [ext_resource type="PackedScene" uid="uid://dnawtbj1e40m8" path="res://instances/monsters/turtle.tscn" id="20_btdct"]
+[ext_resource type="PackedScene" uid="uid://3ghyhteol5db" path="res://instances/monsters/virus.tscn" id="21_7v85a"]
 [ext_resource type="PackedScene" uid="uid://brrei42umof4k" path="res://instances/monsters/blue_ghost.tscn" id="21_putv1"]
 [ext_resource type="PackedScene" uid="uid://ckt72dedah6ur" path="res://instances/monsters/red_ghost.tscn" id="22_wvlrc"]
 
@@ -136,3 +137,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18092, 0, -2.88246)
 
 [node name="Turtle" parent="." instance=ExtResource("20_btdct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2593, 0, -2.99446)
+
+[node name="Virus" parent="." instance=ExtResource("21_7v85a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.74436, 0.0407, -3.15392)
