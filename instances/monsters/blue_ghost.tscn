@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://brrei42umof4k"]
+
+[ext_resource type="Script" path="res://scripts/Shootable.gd" id="1_bjg2e"]
+[ext_resource type="PackedScene" uid="uid://bdeb7c5ke8sbx" path="res://models/monsters/ghostHatAxe/LittleGhost_LP (7).glb" id="1_dgi7a"]
+[ext_resource type="Script" path="res://scripts/MonsterMovement.gd" id="1_ue0wh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_41ofs"]
+radius = 0.205432
+height = 0.881491
+
+[node name="BlueGhost" type="Node3D"]
+script = ExtResource("1_ue0wh")
+metadata/is_monster = true
+
+[node name="RigidBody3D" type="Area3D" parent="."]
+script = ExtResource("1_bjg2e")
+
+[node name="LittleGhost_LP (7)2" parent="RigidBody3D" instance=ExtResource("1_dgi7a")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.380984, 0)
+shape = SubResource("CapsuleShape3D_41ofs")
+
+[connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]

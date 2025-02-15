@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://382qixn35xv8"]
+[gd_scene load_steps=25 format=3 uid="uid://382qixn35xv8"]
 
 [ext_resource type="Script" path="res://scripts/MainSceneManager.gd" id="1_ac03b"]
 [ext_resource type="PackedScene" uid="uid://btknduttnmoxf" path="res://addons/godot-xr-tools/misc/vr_common_shader_cache.tscn" id="2_jw6kp"]
@@ -8,15 +8,18 @@
 [ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="5_e68i2"]
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="5_sorbc"]
 [ext_resource type="PackedScene" uid="uid://b4ysuy43poobf" path="res://addons/godot-xr-tools/functions/function_pickup.tscn" id="6_ysiq7"]
-[ext_resource type="Material" uid="uid://fk5opv0bvfae" path="res://materials/floor.tres" id="9_1mpnu"]
-[ext_resource type="PackedScene" uid="uid://qrdao4204hdn" path="res://instances/walls.tscn" id="9_qaygv"]
-[ext_resource type="PackedScene" uid="uid://cxbj44ycq8buh" path="res://instances/table.tscn" id="11_jktc6"]
-[ext_resource type="Script" path="res://instances/wand.gd" id="12_4di2d"]
-[ext_resource type="PackedScene" uid="uid://65iud7hd2th1" path="res://models/wand/the_elder_wand.glb" id="13_lmd4v"]
-[ext_resource type="PackedScene" uid="uid://5jpmkr8y2ysh" path="res://instances/fire_ball.tscn" id="13_qcbdq"]
-[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="14_8uvor"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="15_fxaho"]
-[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="16_p33bh"]
+[ext_resource type="PackedScene" uid="uid://de0hj1oykbujp" path="res://instances/wand.tscn" id="12_12lnl"]
+[ext_resource type="PackedScene" uid="uid://dagrwykx38x4j" path="res://instances/monsters/pumpkin_1.tscn" id="18_i2856"]
+[ext_resource type="PackedScene" uid="uid://cvdjn0nc1htb1" path="res://instances/monsters/balloon_ghost.tscn" id="18_xwoot"]
+[ext_resource type="PackedScene" uid="uid://dv4v1w7e7xfdq" path="res://instances/monsters/bun.tscn" id="19_3y66n"]
+[ext_resource type="PackedScene" uid="uid://b3xm85ykpw42s" path="res://instances/environments.tscn" id="19_8kpxo"]
+[ext_resource type="PackedScene" uid="uid://cdha2nt7f4df3" path="res://instances/monsters/pumpkin_2.tscn" id="19_yq4te"]
+[ext_resource type="PackedScene" uid="uid://cesn6bojgy72q" path="res://instances/monsters/chest.tscn" id="20_alo2p"]
+[ext_resource type="PackedScene" uid="uid://dnawtbj1e40m8" path="res://instances/monsters/turtle.tscn" id="20_btdct"]
+[ext_resource type="PackedScene" uid="uid://cq7ttoxc5sdvp" path="res://instances/screen.tscn" id="20_ds01o"]
+[ext_resource type="PackedScene" uid="uid://3ghyhteol5db" path="res://instances/monsters/virus.tscn" id="21_7v85a"]
+[ext_resource type="PackedScene" uid="uid://brrei42umof4k" path="res://instances/monsters/blue_ghost.tscn" id="21_putv1"]
+[ext_resource type="PackedScene" uid="uid://ckt72dedah6ur" path="res://instances/monsters/red_ghost.tscn" id="22_wvlrc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2be3w"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,20 +33,13 @@ background_mode = 2
 sky = SubResource("Sky_lvehk")
 tonemap_mode = 2
 
-[sub_resource type="BoxMesh" id="BoxMesh_s76wf"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_gsc5l"]
+size = Vector3(7.64134, 2.55592, 7.4691)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xyxe8"]
-size = Vector3(10, 0.01, 10)
-
-[sub_resource type="BoxMesh" id="BoxMesh_548ji"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_466fv"]
-
-[sub_resource type="Resource" id="Resource_uf0y6"]
-script = ExtResource("15_fxaho")
-
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("area")]
 script = ExtResource("1_ac03b")
+monsters = Array[PackedScene]([ExtResource("18_xwoot"), ExtResource("21_putv1"), ExtResource("19_3y66n"), ExtResource("20_alo2p"), ExtResource("18_i2856"), ExtResource("19_yq4te"), ExtResource("22_wvlrc"), ExtResource("20_btdct"), ExtResource("21_7v85a")])
+area = NodePath("Area3D")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qch1l")
@@ -95,51 +91,21 @@ step_turn_angle = 45.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0642719, 0.360578, 0.922885)
 collision_layer = 524289
 
-[node name="walls" parent="." instance=ExtResource("9_qaygv")]
-visible = false
+[node name="wand" parent="." instance=ExtResource("12_12lnl")]
 
-[node name="Table_012" parent="." instance=ExtResource("11_jktc6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00866747)
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="Floor01" type="StaticBody3D" parent="."]
-collision_layer = 1048575
-collision_mask = 1048575
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0574102, 2.64795, 0.157798)
+shape = SubResource("BoxShape3D_gsc5l")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor01"]
+[node name="Node3D" parent="." instance=ExtResource("19_8kpxo")]
 
-[node name="ground" type="MeshInstance3D" parent="Floor01/MeshInstance3D"]
-transform = Transform3D(10, 0, 0, 0, 0.01, 0, 0, 0, 10, 0, 0, 0)
-material_override = ExtResource("9_1mpnu")
-mesh = SubResource("BoxMesh_s76wf")
-skeleton = NodePath("../../..")
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor01"]
-shape = SubResource("BoxShape3D_xyxe8")
+[node name="Screen" parent="." instance=ExtResource("20_ds01o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.283719, 1.65401, -4.68352)
 
-[node name="wand" type="RigidBody3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.50715, -0.0457888)
-collision_layer = 5
-collision_mask = 5
-script = ExtResource("12_4di2d")
-FireBall = ExtResource("13_qcbdq")
-
-[node name="Sketchfab_Scene" parent="wand" instance=ExtResource("13_lmd4v")]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="wand"]
-visible = false
-mesh = SubResource("BoxMesh_548ji")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="wand"]
-shape = SubResource("BoxShape3D_466fv")
-
-[node name="GrabPointHandRight" parent="wand" instance=ExtResource("14_8uvor")]
-transform = Transform3D(-0.000848314, -0.0723278, -0.997379, 0.999931, -0.0117284, 4.37084e-08, -0.0116978, -0.99731, 0.0723328, -0.0527226, -0.0220441, 0.0841545)
-visible = true
-hand_pose = SubResource("Resource_uf0y6")
-
-[node name="GrabPointHandLeft" parent="wand" instance=ExtResource("16_p33bh")]
-transform = Transform3D(0.00858701, -4.37113e-08, -0.999963, -0.999961, -0.00193731, -0.008587, -0.00193724, 0.999998, -1.66794e-05, -0.0547384, -0.0273693, -0.137666)
-visible = true
-
-[node name="SpawnPos" type="Marker3D" parent="wand"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.179554, 0, 7.84854e-09)
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

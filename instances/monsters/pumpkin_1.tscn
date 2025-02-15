@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dagrwykx38x4j"]
+
+[ext_resource type="PackedScene" uid="uid://c8k4i8crnwjjf" path="res://models/monsters/pumpkin1/pumpkin-carved-lit-c.glb" id="1_44hax"]
+[ext_resource type="Script" path="res://scripts/Shootable.gd" id="1_45vp4"]
+[ext_resource type="Script" path="res://scripts/MonsterMovement.gd" id="1_uygge"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m53tl"]
+radius = 0.292337
+
+[node name="Pumpkin1" type="Node3D"]
+script = ExtResource("1_uygge")
+metadata/is_monster = true
+
+[node name="RigidBody3D" type="Area3D" parent="."]
+script = ExtResource("1_45vp4")
+
+[node name="pumpkin-carved-lit-c2" parent="RigidBody3D" instance=ExtResource("1_44hax")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.273835, 0)
+shape = SubResource("SphereShape3D_m53tl")
+
+[connection signal="body_entered" from="RigidBody3D" to="RigidBody3D" method="_on_body_entered"]

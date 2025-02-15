@@ -11,7 +11,7 @@ func _spawnFireBall():
 	var newFireBall: RigidBody3D = FireBall.instantiate()
 	if (newFireBall):
 		#newFireBall.set_as_toplevel(true)
-		add_child(newFireBall)
+		add_sibling(newFireBall)
 		newFireBall.global_position = $SpawnPos.global_position
 		var forwarDir = $SpawnPos.global_transform.basis.x.normalized()
 		newFireBall.linear_velocity += forwarDir * ballSpeed

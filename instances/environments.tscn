@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3xm85ykpw42s"]
+
+[ext_resource type="PackedScene" uid="uid://qrdao4204hdn" path="res://instances/walls.tscn" id="1_6psdn"]
+[ext_resource type="PackedScene" uid="uid://cxbj44ycq8buh" path="res://instances/table.tscn" id="2_ktn6o"]
+[ext_resource type="Material" uid="uid://fk5opv0bvfae" path="res://materials/floor.tres" id="3_p4eou"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s76wf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xyxe8"]
+size = Vector3(10, 0.01, 10)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="walls" parent="." instance=ExtResource("1_6psdn")]
+
+[node name="Table_012" parent="." instance=ExtResource("2_ktn6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.00866747)
+
+[node name="Floor01" type="StaticBody3D" parent="."]
+collision_layer = 1048575
+collision_mask = 1048575
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor01"]
+
+[node name="ground" type="MeshInstance3D" parent="Floor01/MeshInstance3D"]
+transform = Transform3D(10, 0, 0, 0, 0.01, 0, 0, 0, 10, 0, 0, 0)
+material_override = ExtResource("3_p4eou")
+mesh = SubResource("BoxMesh_s76wf")
+skeleton = NodePath("../../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor01"]
+shape = SubResource("BoxShape3D_xyxe8")
