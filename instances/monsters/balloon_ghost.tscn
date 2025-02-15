@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvdjn0nc1htb1"]
+
+[ext_resource type="PackedScene" uid="uid://bkmagdhq6hqmx" path="res://models/monsters/balloon/Balloon_Ghost_Parts.glb" id="1_ms14q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_g4p6h"]
+radius = 0.212729
+
+[node name="Balloon_Ghost" type="Node3D"]
+
+[node name="Balloon_Ghost_Parts2" parent="." instance=ExtResource("1_ms14q")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000791728, 0.259514, 0)
+shape = SubResource("SphereShape3D_g4p6h")
