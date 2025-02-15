@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cesn6bojgy72q"]
+
+[ext_resource type="PackedScene" uid="uid://cslsv8r7mon7d" path="res://models/monsters/chest/ChestMonsterPolyartDefault.glb" id="1_j423v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7yekd"]
+size = Vector3(0.537598, 0.7099, 0.478271)
+
+[node name="Chest" type="Node3D"]
+
+[node name="ChestMonsterPolyartDefault2" parent="." instance=ExtResource("1_j423v")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00366211, 0.392181, 0.00354004)
+shape = SubResource("BoxShape3D_7yekd")

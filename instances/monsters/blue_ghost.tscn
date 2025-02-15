@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://brrei42umof4k"]
+
+[ext_resource type="PackedScene" uid="uid://bdeb7c5ke8sbx" path="res://models/monsters/ghostHatAxe/LittleGhost_LP (7).glb" id="1_dgi7a"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_41ofs"]
+radius = 0.205432
+height = 0.881491
+
+[node name="BlueGhost" type="Node3D"]
+
+[node name="LittleGhost_LP (7)2" parent="." instance=ExtResource("1_dgi7a")]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.380984, 0)
+shape = SubResource("CapsuleShape3D_41ofs")
